@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>Komododragon Race | Home</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,9 +20,17 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="play">
-    <a class="hvr-wobble-vertical" id="d11" href="#current" onclick="clicksound2.playclip()"><img src="img/download_real.png" alt="Yay!"></a>
-</div>
+<header>
+    <nav>
+        <ul>
+            <li><a href=""><img src="img/download.png" alt="Download"></a></li>
+            <li><a href=""><img src="img/login.png" alt="Login"></a></li>
+            <li><a href=""><img src="img/register.png" alt="Register"></a></li>
+        </ul>
+    </nav>
+</header>
+
+
 </body>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>

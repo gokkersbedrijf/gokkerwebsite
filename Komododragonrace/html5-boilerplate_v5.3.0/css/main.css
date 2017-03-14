@@ -108,6 +108,9 @@
     font-family: Bariol-Regular;
     color: #DDDDDA;
   }
+  ul{
+      list-style-type: none;
+  }
   body{
     background: #000 url('../img/bodyback.jpg') no-repeat;
     background-size: 100%;
@@ -117,144 +120,14 @@
     top: 31%;
     left: 43%;
   }
-  @-webkit-keyframes hvr-buzz {
-  50% {
-    -webkit-transform: translateX(3px) rotate(2deg);
-    transform: translateX(3px) rotate(2deg);
+  nav{
+      margin: 0 auto;
+      width: 80%;
   }
-  100% {
-    -webkit-transform: translateX(-3px) rotate(-2deg);
-    transform: translateX(-3px) rotate(-2deg);
+  nav ul{
+      display: flex;
+      justify-content: space-between;
   }
-}
-@keyframes hvr-buzz {
-  50% {
-    -webkit-transform: translateX(3px) rotate(2deg);
-    transform: translateX(3px) rotate(2deg);
-  }
-  100% {
-    -webkit-transform: translateX(-3px) rotate(-2deg);
-    transform: translateX(-3px) rotate(-2deg);
-  }
-}
-.hvr-buzz {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-}
-.hvr-buzz:hover, .hvr-buzz:focus, .hvr-buzz:active {
-  -webkit-animation-name: hvr-buzz;
-  animation-name: hvr-buzz;
-  -webkit-animation-duration: 0.15s;
-  animation-duration: 0.15s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-@keyframes hvr-wobble-vertical {
-  16.65% {
-    -webkit-transform: translateY(8px);
-    transform: translateY(8px);
-  }
-  33.3% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
-  }
-  49.95% {
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);
-  }
-  66.6% {
-    -webkit-transform: translateY(-2px);
-    transform: translateY(-2px);
-  }
-  83.25% {
-    -webkit-transform: translateY(1px);
-    transform: translateY(1px);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-.hvr-wobble-vertical {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-}
-.hvr-wobble-vertical:hover, .hvr-wobble-vertical:focus, .hvr-wobble-vertical:active {
-  -webkit-animation-name: hvr-wobble-vertical;
-  animation-name: hvr-wobble-vertical;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-}
-
-  #d1{
-    position: absolute;
-    top:5%; 
-    left: 10%;
-  }
-  #d2{
-    position: absolute;
-    top:37%; 
-    right:13%;
-  }
-  #d3{
-    position: absolute;
-    top:60%; 
-    left: 20%;
-  }
-  #d4{
-    position: absolute;
-    top:80%; 
-    right:10%;
-  }
-  #d5{
-    position: absolute;
-    top:2%; 
-    left: 50%;
-  }
-  #d6{
-    position: absolute;
-    top:75%; 
-    left:10%;
-  }
-  #d7{
-    position: absolute;
-    top:70%; 
-    left: 50%;
-  }
-  #d8{
-    position: absolute;
-    top:5%; 
-    right:3%;
-  }
-  #d9{
-    position: absolute;
-    top:45%; 
-    left:2%;
-  }
-  #d10{
-    position: absolute;
-    top:35%; 
-    left: 20%;
-  }
-  #d11{
-    position: absolute;
-    top:55%; 
-    right: 10%;
-  }
-  
-    
     
 
 
