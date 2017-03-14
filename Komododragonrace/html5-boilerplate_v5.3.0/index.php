@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="js/dropdown.js"></script>
-
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -37,7 +35,6 @@
                         </fieldset>
                         <fieldset id="actions">
                             <input type="submit" id="submit" value="Log in">
-                            <label><input type="checkbox" checked="checked"> Keep me signed in</label>
                         </fieldset>
                     </form>
                 </div>
