@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="js/dropdown.js"></script>
+
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -23,9 +25,26 @@
 <header>
     <nav>
         <ul>
-            <li><a href=""><img src="img/download.png" alt="Download"></a></li>
-            <li><a href=""><img src="img/login.png" alt="Login"></a></li>
-            <li><a href=""><img src="img/register.png" alt="Register"></a></li>
+            <li id="login">
+                <a id="login-trigger" href="#">
+                    Log in <span>&#x25BC;</span>
+                </a>
+                <div id="login-content">
+                    <form>
+                        <fieldset id="inputs">
+                            <input id="username" type="email" name="Email" placeholder="Your email address" required>
+                            <input id="password" type="password" name="Password" placeholder="Password" required>
+                        </fieldset>
+                        <fieldset id="actions">
+                            <input type="submit" id="submit" value="Log in">
+                            <label><input type="checkbox" checked="checked"> Keep me signed in</label>
+                        </fieldset>
+                    </form>
+                </div>
+            </li>
+            <li id="signup">
+                <a href="">Sign up FREE</a>
+            </li>
         </ul>
     </nav>
 </header>
