@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $('#signup-trigger').click(function() {
-
         $(this).parent().addClass('open');
         $(this).next('#signup-content').slideToggle();
         $(this).toggleClass('active');
@@ -10,11 +9,6 @@ $(document).ready(function(){
         }
         else{
             $(this).find('span').html('&#x25BC;');
-        }
-
-        var otherli = $(this).parent().siblings('li');
-        for (var i in otherli ){
-            $(this).parent().removeClass('open');
         }
     });
 });

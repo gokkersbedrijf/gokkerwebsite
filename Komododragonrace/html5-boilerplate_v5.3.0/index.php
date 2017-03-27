@@ -1,5 +1,5 @@
 <?php
-include('login.php');
+session_start();
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -52,14 +52,13 @@ include('login.php');
             </li>
             <li id="signup">
                 <?php
-                    include('register.php');
                     if(isset ($_SESSION['login_user']))
                     {
                         echo "<a href=\"logout.php\"><span style='color:#000; margin:0 5px;'>Log Out</span></a>";
                     }
                     elseif(!isset ($_SESSION['login_user']))
                     {
-                        $output = '<a id="signup-trigger" href="#">Sign up FREE <span>&#x25BC;</span></a>';
+                        $output = '<a id="signup-trigger" href="#">Sign up <span>&#x25BC;</span></a>';
                         $output .= '<div id="signup-content">';
                         $output .= '<form method="post" action="register.php">';
                         $output .= '<div class="inputs">';
@@ -80,6 +79,7 @@ include('login.php');
                         echo $output;
                     }
                 ?>
+
         </ul>
     </nav>
 </header>

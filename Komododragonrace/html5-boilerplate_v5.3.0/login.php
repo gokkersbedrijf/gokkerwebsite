@@ -1,12 +1,13 @@
 <?php
+session_start();
 $error = '';
 if (isset($_POST['submit'])) {
     if (empty($_POST['username']) || empty($_POST['password'])) {
-        header("Location: index.php");
+        $message = "Fill in both fields";
+        header("Location:index.php");
     }
     else
     {
-
         $username=$_POST['username'];
         $password=$_POST['password'];
         $connection = mysqli_connect("localhost", "root", "", "members");
@@ -15,18 +16,19 @@ if (isset($_POST['submit'])) {
         $password = stripslashes($password);
         $username = mysqli_real_escape_string($connection, $username);
         $password = mysqli_real_escape_string($connection, $password);
+        $password = hash('sha256', $password);
 
         $db = mysqli_select_db( $connection, "members");
 
         $query = mysqli_query($connection, "SELECT * FROM members WHERE password='$password' AND username='$username'");
         $rows = mysqli_num_rows($query);
-        if ($rows > 0) {
+        if ($rows == 1) {
             $_SESSION['login_user'] = $username;
-            die("1");
-            header("location: index.php");
+            $message = "Welcome $username";
+            header("Location:index.php");
         } else {
-            die("2");
-            header("location: index.php");
+            $message = "Wrong Username or Password";
+            header("Location:index.php");
         }
         mysqli_close($connection);
 

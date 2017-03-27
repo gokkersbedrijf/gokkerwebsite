@@ -1,14 +1,11 @@
 <?php
 session_start();
-if( isset($_SESSION['login_user'])){
-    header("Location: index.php");
-}
 require 'session.php';
-if ( isset($_POST['register']) ) {
-
-    $name = trim($_POST['username']);
-    $name = strip_tags($name);
-    $name = htmlspecialchars($name);
+$error = false;
+if ( isset($_POST['register_btn']) ) {
+    $username = trim($_POST['username']);
+    $username = strip_tags($username);
+    $username = htmlspecialchars($username);
 
     $email = trim($_POST['email']);
     $email = strip_tags($email);
@@ -22,24 +19,24 @@ if ( isset($_POST['register']) ) {
     $password2 = strip_tags($password2);
     $password2 = htmlspecialchars($password2);
 
-    if (empty($name)) {
+    if (empty($username)) {
         $error = true;
-        $nameError = "Please enter your full name.";
-        die("1");
-    } else if (strlen($name) < 3) {
+        $message = "Please enter your full name.";
+        header("Location:index.php");
+    } else if (strlen($username) < 3) {
         $error = true;
-        $nameError = "Name must have atleat 3 characters.";
-        die("2");
-    } else if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
+        $message = "Name must have atleat 3 characters.";
+        header("Location:index.php");
+    } else if (!preg_match("/^[a-zA-Z ]+$/",$username)) {
         $error = true;
-        $nameError = "Name must contain alphabets and space.";
-        die("3");
+        $message = "Name must contain alphabets and space.";
+        header("Location:index.php");
     }
 
     if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
         $error = true;
-        $emailError = "Please enter valid email address.";
-        die("4");
+        $message = "Please enter valid email address.";
+        header("Location:index.php");
     } else {
 
         $query = "SELECT email FROM members WHERE email='$email'";
@@ -47,41 +44,37 @@ if ( isset($_POST['register']) ) {
         $count = mysqli_num_rows($result);
         if($count!= 0){
             $error = true;
-            $emailError = "Provided Email is already in use.";
-            die("5");
+            $message = "Provided Email is already in use.";
+            header("Location:index.php");
         }
     }
     if (empty($password)){
         $error = true;
-        $passError = "Please enter password.";
-        die("6");
+        $message = "Please enter password.";
+        header("Location:index.php");
     } else if(strlen($password) < 6) {
         $error = true;
-        $passError = "Password must have atleast 6 characters.";
-        die("7");
+        $message = "Password must have atleast 6 characters.";
+        header("Location:index.php");
     }
     if (empty($password2) || $password2 != $password){
         $error = true;
-        $pass2Error = "Passwords do not match.";
-        die("8");
+        $message = "Passwords do not match.";
+        header("Location:index.php");
     }
     $password = hash('sha256', $password);
     if( !$error ) {
 
-        $query = mysqli_query($connection,"INSERT INTO members(username,email,password) VALUES('$name','$email','$password')");
+        $query = mysqli_query($connection,"INSERT INTO members(username,email,password) VALUES('$username','$email','$password')");
         $res = mysqli_query($connection,$query);
 
         if ($res) {
-            $errMSG = "Successfully registered, you may login now";
-            unset($name);
-            unset($email);
-            unset($pass);
-            die("9");
-            header("Location: index.php");
+            $message = "Successfully registered, you may login now";
+            $_SESSION['login_user'] = $username;
+            header("Location:index.php");
         } else {
-            $errMSG = "Something went wrong, try again later...";
-            die("10");
-            header("Location: index.php");
+            $message = "Something went wrong, try again later...";
+            header("Location:index.php");
         }
 
     }
