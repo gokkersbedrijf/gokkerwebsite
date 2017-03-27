@@ -1,3 +1,6 @@
+<?php
+include('login.php');
+?>
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -24,24 +27,59 @@
     <nav>
         <ul>
             <li id="login">
-                <a id="login-trigger" href="#">
-                    Log in <span>&#x25BC;</span>
-                </a>
-                <div id="login-content">
-                    <form>
-                        <fieldset id="inputs">
-                            <input id="username" type="email" name="Email" placeholder="Your email address" required>
-                            <input id="password" type="password" name="Password" placeholder="Password" required>
-                        </fieldset>
-                        <fieldset id="actions">
-                            <input type="submit" id="submit" value="Log in">
-                        </fieldset>
-                    </form>
-                </div>
+                <?php
+                if(isset ($_SESSION['login_user']))
+                {
+                    echo "<span style='color:#444; margin:0 5px;'>Welcome, {$_SESSION['login_user']}</span>";
+                }
+                elseif(!isset ($_SESSION['login_user']))
+                {
+                    $output = '<a id="login-trigger" href="#">Log in <span>&#x25BC;</span></a>';
+                    $output .= '<div id="login-content">';
+                    $output .= '<form method="post" action="login.php">';
+                    $output .= '<div class="inputs">';
+                    $output .= '<input id="username" type="text" name="username" placeholder="Username" required>';
+                    $output .= '<input id="password" type="password" name="password" placeholder="Password" required>';
+                    $output .= '</div>';
+                    $output .= '<div class="inputs">';
+                    $output .= '<input type="submit" id="submit" name="submit" value="Log in">';
+                    $output .= '</div>';
+                    $output .= '</form>';
+                    $output .= '</div>';
+                    echo $output;
+                }
+                ?>
             </li>
             <li id="signup">
-                <a href="">Sign up FREE</a>
-            </li>
+                <?php
+                    include('register.php');
+                    if(isset ($_SESSION['login_user']))
+                    {
+                        echo "<a href=\"logout.php\"><span style='color:#000; margin:0 5px;'>Log Out</span></a>";
+                    }
+                    elseif(!isset ($_SESSION['login_user']))
+                    {
+                        $output = '<a id="signup-trigger" href="#">Sign up FREE <span>&#x25BC;</span></a>';
+                        $output .= '<div id="signup-content">';
+                        $output .= '<form method="post" action="register.php">';
+                        $output .= '<div class="inputs">';
+                        $output .= '<input type="text" name="username" id="username" placeholder="Username" required>';
+                        $output .= '';
+                        $output .= '<input type="email" name="email" id="email" placeholder="E-Mail" required>';
+                        $output .= '';
+                        $output .= '<input type="password" name="password" id="password" placeholder="Password" required>';
+                        $output .= '';
+                        $output .= '<input type="password" name="password2" id="password2" placeholder="Repeat Password" required>';
+                        $output .= '';
+                        $output .= '</div>';
+                        $output .= '<div class="inputs">';
+                        $output .= '<input type="submit" name="register_btn" id="register" value="Register">';
+                        $output .= '</div>';
+                        $output .= '</form>';
+                        $output .= '</div>';
+                        echo $output;
+                    }
+                ?>
         </ul>
     </nav>
 </header>
@@ -51,7 +89,8 @@
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+<script src="js/login.js"></script>
+<script src="js/signup.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

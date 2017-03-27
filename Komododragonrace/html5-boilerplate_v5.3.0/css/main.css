@@ -104,8 +104,18 @@
     font-style: normal;
     font-weight: normal;
   }
+  @font-face {
+      font-family: 'ShowcardGothic-Reg';
+      src: url('../fonts/ShowcardGothic-Reg.eot');
+      src: url('../fonts/ShowcardGothic-Reg.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/ShowcardGothic-Reg.woff') format('woff'),
+      url('../fonts/ShowcardGothic-Reg.ttf') format('truetype'),
+      url('../fonts/ShowcardGothic-Reg.svg#ShowcardGothic-Reg') format('svg');
+      font-style: normal;
+      font-weight: normal;
+    }
   html{
-    font-family: Bariol-Regular;
+    font-family: ShowcardGothic-Reg;
     color: #DDDDDA;
   }
   ul{
@@ -120,12 +130,15 @@
     top: 31%;
     left: 43%;
   }
+  a{
+      text-decoration: none;
+  }
   nav{
       margin: 0 auto;
-      width: 80%;
+      width: 60%;
   }
 nav ul {
-    margin: 0;
+    margin: 3% 0 0;
     padding: 0;
     list-style: none;
     position: relative;
@@ -139,13 +152,12 @@ nav li {
     float: left;
 }
 
-nav #login {
+nav #login, #signup {
     border-right: 1px solid #ddd;
     box-shadow: 1px 0 0 #fff;
 }
 
-nav #login-trigger,
-nav #signup a {
+nav #login-trigger, nav #signup-trigger {
     display: inline-block;
     *display: inline;
     *zoom: 1;
@@ -158,21 +170,15 @@ nav #signup a {
     text-shadow: 0 1px 0 #fff;
 }
 
-nav #signup a {
-    border-radius: 0 3px 3px 0;
-}
-
-nav #login-trigger {
+nav #login-trigger, #signup-trigger {
     border-radius: 3px 0 0 3px;
 }
 
-nav #login-trigger:hover,
-nav #login .active,
-nav #signup a:hover {
+nav #login-trigger:hover, nav #signup-trigger:hover {
     background: #fff;
 }
 
-nav #login-content {
+nav #login-content, #signup-content {
     display: none;
     position: absolute;
     top: 24px;
@@ -185,14 +191,15 @@ nav #login-content {
     border-radius: 3px 0 3px 3px;
 }
 
-nav li #login-content {
+nav li #login-content, #signup-content {
     right: 0;
     width: 250px;
 }
 
 /*--------------------*/
 
-#inputs input {
+.inputs input {
+    font-family: Bariol-Regular;
     background: #f1f1f1;
     padding: 6px 5px;
     margin: 0 0 5px 0;
@@ -202,62 +209,41 @@ nav li #login-content {
     box-shadow: 0 1px 1px #ccc inset;
 }
 
-#inputs input:focus {
-    background-color: #fff;
-    border-color: #e8c291;
+.inputs input:focus {
+    background-color: #000;
+    border-color: #fff;
     outline: none;
-    box-shadow: 0 0 0 1px #e8c291 inset;
+    box-shadow: 0 0 0 1px #000 inset;
 }
 
 /*--------------------*/
 
-#login #actions {
-    margin: 10px 0 0 0;
-}
-
-#login #submit {
-    background-color: #d14545;
-    background-image: linear-gradient(top, #e97171, #d14545);
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
+#login #submit, #signup #register {
+    font-family: ShowcardGothic-Reg;
+    background-color: #497000;
+    background-image: linear-gradient(top, #c5e161, #497000);
     border-radius: 3px;
-    text-shadow: 0 1px 0 rgba(0,0,0,.5);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-    border: 1px solid #7e1515;
+    border: 1px solid #274f04;
     float: left;
     height: 30px;
     padding: 0;
     width: 100px;
-    cursor: pointer;
-    font: bold 14px Arial, Helvetica;
+    font: ShowcardGothic-Reg;
     color: #fff;
 }
 
-#login #submit:hover,
-#login #submit:focus {
-    background-color: #e97171;
-    background-image: linear-gradient(top, #d14545, #e97171);
+#login #submit:hover, #login #submit:focus, #signup #register:hover, #signup #register:focus{
+    background-color: #76991b;
+    background-image: linear-gradient(top, #678517, #76991b);
 }
 
-#login #submit:active {
+#login #submit:active, #signup #register:active{
     outline: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
 }
 
-#login #submit::-moz-focus-inner {
-    border: none;
-}
 
-#login label {
-    float: right;
-    line-height: 30px;
-}
 
-#login label input {
-    position: relative;
-    top: 2px;
-    right: 2px;
-}
 
 
 
